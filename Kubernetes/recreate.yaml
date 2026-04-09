@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-app-recreate
+  labels:
+    app: customer-app-recreate
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: customer-app-recreate
+  template:
+    metadata:
+      labels:
+        app: customer-app-recreate
+    spec:
+      containers:
+      - name: customer-app
+        image: 936668162005.dkr.ecr.us-east-1.amazonaws.com/customer-service-app:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: customer-config
+              key: db-url
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "admin"
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: customer-secret
+              key: db-password
