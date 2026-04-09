@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: customer-config
+data:
+  db-url: jdbc:mysql://customerdb.cq12u8miwela.us-east-1.rds.amazonaws.com:3306/customerdb
