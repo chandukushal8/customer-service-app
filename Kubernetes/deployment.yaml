@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: customer-app
-        image: 936668162005.dkr.ecr.us-east-1.amazonaws.com/customer-service-app:latest
+        image: customer
         ports:
         - containerPort: 8080
         env:
