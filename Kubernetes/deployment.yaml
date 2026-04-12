@@ -7,8 +7,6 @@ spec:
   selector:
     matchLabels:
       app: customer-app
-  strategy:
-    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -16,19 +14,6 @@ spec:
     spec:
       containers:
       - name: customer-app
-        image: 587196866069.dkr.ecr.us-east-1.amazonaws.com/customer:1
+        image: 210126447401.dkr.ecr.us-east-1.amazonaws.com/customer-service-app:latest
         ports:
         - containerPort: 8080
-        env:
-        - name: SPRING_DATASOURCE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: customer-config
-              key: db-url
-        - name: SPRING_DATASOURCE_USERNAME
-          value: admin
-        - name: SPRING_DATASOURCE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: customer-secret
-              key: db-password
