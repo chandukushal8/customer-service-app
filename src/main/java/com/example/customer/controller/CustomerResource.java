@@ -10,7 +10,7 @@ public class CustomerResource {
 
     public CustomerResource() {
         // Change this during deployment to test rolling update/recreate
-        this.message = "Customer microservice updated - v3 (recreate)";
+        this.message = "This is a customer service";
     }
 
     @GetMapping("/customer/ping")
