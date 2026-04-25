@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'ci' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Code checked out successfully'
+            }
+        }
+    }
+}
+``
