@@ -10,7 +10,7 @@ public class CustomerResource {
 
     public CustomerResource() {
         // Change this during deployment to test rolling update/recreate
-        this.message = "This is a customer service";
+        this.message = "This is a chandu";
     }
 
     @GetMapping("/customer/ping")
