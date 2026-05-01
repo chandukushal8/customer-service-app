@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,35 +13,35 @@ spec:
         app: customer-app
     spec:
       containers:
-      - name: customer-app
-        image: 211125621923.dkr.ecr.us-east-1.amazonaws.com/customer-repo:latest
-        ports:
-        - containerPort: 8080
+        - name: customer-app
+          image: 211125621923.dkr.ecr.us-east-1.amazonaws.com/customer-repo:latest
+          ports:
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: customer-app-svc
 spec:
+  type: ClusterIP
   selector:
     app: customer-app
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 8080
-  type: ClusterIP
+      protocol: TCP
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: customer-app-ingress
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
     alb.ingress.kubernetes.io/healthcheck-path: /
 spec:
+  ingressClassName: alb
   rules:
     - http:
         paths:
