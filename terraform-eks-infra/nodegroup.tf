@@ -2,7 +2,11 @@ resource "aws_eks_node_group" "this" {
   cluster_name    = aws_eks_cluster.this.name
   node_group_name = "customer-ng"
   node_role_arn   = aws_iam_role.worker_role.arn
-  subnet_ids      = data.aws_subnets.private.ids
+
+  subnet_ids = [
+    aws_subnet.private_1a.id,
+    aws_subnet.private_1b.id
+  ]
 
   scaling_config {
     desired_size = 2
@@ -19,3 +23,4 @@ resource "aws_eks_node_group" "this" {
     aws_iam_role_policy_attachment.worker_ecr_policy
   ]
 }
+``
