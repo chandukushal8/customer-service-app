@@ -10,4 +10,3 @@ data "aws_subnets" "subnets" {
     values = [data.aws_vpc.existing.id]
   }
 }
-``
