@@ -16,7 +16,7 @@ spec:
           image: datadog/agent:latest
           env:
             - name: DD_API_KEY
-              value: 36d7c52a45b5d95ec84999e761dbdfab
+              value: "36d7c52a45b5d95ec84999e761dbdfab"
 
             - name: DD_LOGS_ENABLED
               value: "true"
