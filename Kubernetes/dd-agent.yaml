@@ -1,0 +1,11 @@
+ env:
+    - name: DD_PROCESS_CONFIG_PROCESS_COLLECTION_ENABLED
+      value: "true"
+  volumeMounts:
+    - name: passwd
+      mountPath: /etc/passwd
+      readOnly: true
+  volumes:
+    - hostPath:
+        path: /etc/passwd
+      name: passwd
