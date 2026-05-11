@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: datadog-agent
+  name: dd-agent
 spec:
   selector:
     matchLabels:
-      app: datadog-agent
+      app: dd-agent
   template:
     metadata:
       labels:
-        app: datadog-agent
+        app: dd-agent
     spec:
       containers:
         - name: datadog-agent
