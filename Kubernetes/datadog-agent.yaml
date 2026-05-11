@@ -11,13 +11,8 @@ spec:
       apiSecret:
         secretName: "datadog-secret"
         keyName: "api-key"
-    tags:
-      - "env:dev"
   features:
     clusterChecks:
       enabled: true
     orchestratorExplorer:
       enabled: true
-    logCollection:
-      enabled: true
-      containerCollectAll: true
