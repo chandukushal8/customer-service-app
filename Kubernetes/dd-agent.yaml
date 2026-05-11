@@ -1,5 +1,43 @@
-env:
-  - name: DD_LOGS_ENABLED
-    value: "true"
-  - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
-    value: "true"
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: datadog-agent
+  namespace: default
+
+spec:
+  selector:
+    matchLabels:
+      app: datadog-agent
+
+  template:
+    metadata:
+      labels:
+        app: datadog-agent
+
+    spec:
+      containers:
+        - name: datadog-agent
+          image: datadog/agent:latest
+
+          env:
+            - name: DD_API_KEY
+              value: "<YOUR_DATADOG_API_KEY>"
+
+            - name: DD_LOGS_ENABLED
+              value: "true"
+
+            - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+              value: "true"
+
+            - name: DD_PROCESS_CONFIG_PROCESS_COLLECTION_ENABLED
+              value: "true"
+
+          volumeMounts:
+            - name: passwd
+              mountPath: /etc/passwd
+              readOnly: true
+
+      volumes:
+        - name: passwd
+          hostPath:
+            path: /etc/passwd
