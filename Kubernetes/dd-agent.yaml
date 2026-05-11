@@ -1,11 +1,20 @@
- env:
-    - name: DD_PROCESS_CONFIG_PROCESS_COLLECTION_ENABLED
-      value: "true"
-  volumeMounts:
-    - name: passwd
-      mountPath: /etc/passwd
-      readOnly: true
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dd-agent
+spec:
+  containers:
+    - name: datadog-agent
+      image: datadog/agent:latest
+      env:
+        - name: DD_PROCESS_CONFIG_PROCESS_COLLECTION_ENABLED
+          value: "true"
+      volumeMounts:
+        - name: passwd
+          mountPath: /etc/passwd
+          readOnly: true
+
   volumes:
-    - hostPath:
+    - name: passwd
+      hostPath:
         path: /etc/passwd
-      name: passwd
