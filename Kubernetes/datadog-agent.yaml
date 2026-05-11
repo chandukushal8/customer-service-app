@@ -5,7 +5,7 @@ metadata:
   namespace: "datadog"
 spec:
   global:
-    clusterName: "your-cluster-name-here"
+    clusterName: "eks-cluster"
     site: "us5.datadoghq.com"
     credentials:
       apiSecret:
@@ -16,23 +16,3 @@ spec:
       enabled: true
     orchestratorExplorer:
       enabled: true
-    apm:
-      instrumentation:
-        enabled: true
-        targets:
-          - name: "default-target"
-            ddTraceVersions:
-              java: "1"
-              python: "4"
-              js: "5"
-              php: "1"
-              dotnet: "3"
-              ruby: "2"
-    logCollection:
-      enabled: true
-      containerCollectAll: true
-    autoscaling:
-      workload:
-        enabled: true
-    eventCollection:
-      unbundleEvents: true
