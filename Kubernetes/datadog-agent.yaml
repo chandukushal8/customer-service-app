@@ -5,14 +5,12 @@ metadata:
   namespace: "datadog"
 spec:
   global:
-    clusterName: "eks-cluster"
+    clusterName: "your-cluster-name-here"
     site: "us5.datadoghq.com"
     credentials:
       apiSecret:
         secretName: "datadog-secret"
         keyName: "api-key"
-    tags:
-      - "env:dev"
   features:
     clusterChecks:
       enabled: true
@@ -33,3 +31,8 @@ spec:
     logCollection:
       enabled: true
       containerCollectAll: true
+    autoscaling:
+      workload:
+        enabled: true
+    eventCollection:
+      unbundleEvents: true
