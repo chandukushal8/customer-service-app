@@ -1,31 +1,22 @@
-env:
-- name: DD_API_KEY
-    value: 36d7c52a45b5d95ec84999e761dbdfab
-
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: datadog-agent
-  namespace: default
-
 spec:
   selector:
     matchLabels:
       app: datadog-agent
-
   template:
     metadata:
       labels:
         app: datadog-agent
-
     spec:
       containers:
         - name: datadog-agent
           image: datadog/agent:latest
-
           env:
             - name: DD_API_KEY
-              value: "<YOUR_DATADOG_API_KEY>"
+              value: 36d7c52a45b5d95ec84999e761dbdfab
 
             - name: DD_LOGS_ENABLED
               value: "true"
