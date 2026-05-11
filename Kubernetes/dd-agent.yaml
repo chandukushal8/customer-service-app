@@ -1,3 +1,7 @@
+env:
+- name: DD_API_KEY
+    value: 36d7c52a45b5d95ec84999e761dbdfab
+
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
